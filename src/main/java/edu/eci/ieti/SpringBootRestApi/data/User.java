@@ -1,5 +1,10 @@
 package edu.eci.ieti.SpringBootRestApi.data;
 
+import edu.eci.ieti.SpringBootRestApi.dto.UserDto;
+
+import java.security.Timestamp;
+import java.util.UUID;
+
 public class User {
 
     private String id, name, email, lastName, createdAt;
@@ -12,6 +17,16 @@ public class User {
         this.lastName = lastName;
         this.createdAt = createdAt;
     }
+
+    public User(UserDto user) {
+        this.id = UUID.randomUUID().toString();
+        this.name = user.getName();
+        this.email = user.getEmail();
+        this.lastName = user.getLastName();
+        this.createdAt = java.time.LocalDate.now().toString();
+
+    }
+
 
     public String getId() {
         return id;
